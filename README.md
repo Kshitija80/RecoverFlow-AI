@@ -193,54 +193,57 @@ Timestamp
 
 This improves transparency and traceability.
 
-🏗️ System Architecture
+## 🏗️ System Architecture
+
+```text
 ┌──────────────────────┐
-│ Failed Payments │
+│   Failed Payments    │
 └──────────┬───────────┘
-│
-▼
+           │
+           ▼
 ┌──────────────────────┐
 │ AI Payment Diagnosis │
-│ Gemini AI │
+│     Gemini AI        │
 └──────────┬───────────┘
-│
-AI unavailable?
-│
-▼
+           │
+           ▼
+     AI available?
+       /       \
+     Yes        No
+      │          │
+      ▼          ▼
+┌─────────────┐ ┌──────────────────────────┐
+│ AI Diagnosis│ │ Deterministic Fallback   │
+└──────┬──────┘ └────────────┬─────────────┘
+       │                     │
+       └──────────┬──────────┘
+                  ▼
 ┌──────────────────────┐
-│ Deterministic Fallback│
+│ Recommended Action   │
 └──────────┬───────────┘
-│
-▼
-┌──────────────────────┐
-│ Recommended Action │
-└──────────┬───────────┘
-│
-▼
+           ▼
 ┌──────────────────────┐
 │ Safety Policy Engine │
 └──────────┬───────────┘
-│
-┌───────────┴───────────┐
-│ │
-▼ ▼
-APPROVE BLOCK / ESCALATE
-│
-▼
-┌───────────────────┐
-│ Recovery Execution │
-│ (Simulated) │
-└─────────┬─────────┘
-│
-▼
-┌───────────────────┐
-│ Batch + Audit Log │
-└─────────┬─────────┘
-│
-▼
-┌───────────────────┐
-│ React Dashboard │
-└───────────────────┘
+           │
+     ┌─────┴──────┐
+     ▼            ▼
+ APPROVE    BLOCK / ESCALATE
+     │
+     ▼
+┌──────────────────────┐
+│ Recovery Execution   │
+│    (Simulated)       │
+└──────────┬───────────┘
+           ▼
+┌──────────────────────┐
+│ Batch + Audit Log    │
+└──────────┬───────────┘
+           ▼
+┌──────────────────────┐
+│ React Dashboard      │
+└──────────────────────┘
+```
 
 ## 📸 Project Screenshots
 
@@ -281,6 +284,7 @@ Recovery batches
 Audit logs
 
 📂 Project Structure
+```text
 Razorpay-Buildathon/
 │
 ├── backend/
@@ -314,6 +318,8 @@ Razorpay-Buildathon/
 │
 ├── README.md
 └── .gitignore
+
+```
 
 Installation and Setup
 
