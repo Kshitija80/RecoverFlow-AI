@@ -284,6 +284,7 @@ Recovery batches
 Audit logs
 
 📂 Project Structure
+
 ```text
 Razorpay-Buildathon/
 │
@@ -321,180 +322,301 @@ Razorpay-Buildathon/
 
 ```
 
-Installation and Setup
+## ⚙️ Installation and Setup
 
-1. Clone the Repository
-   git clone <YOUR_GITHUB_REPOSITORY_URL>
+Follow these steps to run RecoverFlow AI locally.
+
+### 1. Clone the Repository
+
+Clone the repository to your local machine:
+
+```bash
+git clone <YOUR_GITHUB_REPOSITORY_URL>
+```
 
 Move into the project directory:
 
-cd RecoverFlow-AI
-Backend Setup
+```bash
+cd Razorpay-Buildathon
+```
 
-Move to the backend folder:
+---
 
+### 2. Backend Setup
+
+Open a terminal and move to the backend folder:
+
+```bash
 cd backend
+```
 
-Install dependencies:
+Install the required dependencies:
 
+```bash
 npm install
+```
 
-Create a .env file:
+Create a `.env` file inside the `backend` folder and add your Gemini API key:
 
+```env
 GEMINI_API_KEY=your_gemini_api_key_here
+```
 
-Start the backend:
+Start the backend server:
 
+```bash
 npm run dev
+```
 
-The backend runs on:
+The backend server will run on:
 
-http://localhost:5000
-Frontend Setup
+`http://localhost:5000`
 
-Open a new terminal and move to the frontend folder:
+---
 
+### 3. Frontend Setup
+
+Open a **new terminal**.
+
+Move to the frontend folder:
+
+```bash
 cd frontend
+```
 
-Install dependencies:
+Install the required dependencies:
 
+```bash
 npm install
+```
 
-Start the frontend:
+Start the frontend application:
 
+```bash
 npm run dev
+```
 
-Open the local URL displayed by Vite in your browser.
+Vite will display a local URL in the terminal, similar to:
 
-API Workflow
-Diagnose a Payment
+```text
+http://localhost:5173
+```
+
+Open that URL in your browser to use the RecoverFlow AI dashboard.
+
+---
+
+## 🔌 API Workflow
+
+### 1. Diagnose a Payment
+
+```http
 GET /api/payments/:paymentId/diagnose
+```
 
 The system analyzes a failed payment using Gemini AI.
 
-If AI is unavailable, deterministic fallback logic is used.
+If the AI service is unavailable or rate-limited, RecoverFlow AI automatically uses deterministic fallback logic.
 
-Apply Safety Policy
+---
 
-The recommended recovery action is checked against the safety policy layer before execution.
+### 2. Apply Safety Policy
 
-Example response:
+Before a recovery action is executed, the recommended action passes through the safety policy layer.
 
+Example policy response:
+
+```json
 {
-"decision": "APPROVE",
-"action": "retry_payment",
-"reason": "Recovery action passed all safety policy checks"
+  "decision": "APPROVE",
+  "action": "retry_payment",
+  "reason": "Recovery action passed all safety policy checks"
 }
-Execute Recovery
+```
 
-An approved recovery action can be executed and the outcome is recorded.
+---
 
-Example:
+### 3. Execute Recovery
 
+An approved recovery action can then be executed.
+
+Example execution result:
+
+```json
 {
-"executed": true,
-"outcome": "recovered",
-"recovered_amount": 1612
+  "executed": true,
+  "outcome": "recovered",
+  "recovered_amount": 1612
 }
-Run a Recovery Batch
+```
+
+> **Note:** Recovery execution is currently simulated. No real payment transaction is performed.
+
+---
+
+### 4. Run a Recovery Batch
+
+```http
 POST /api/recovery/batch
+```
 
-This endpoint processes failed payments and creates a new recovery batch.
+This endpoint processes failed payments as a recovery batch.
 
-The results are saved and the dashboard is refreshed automatically.
+For each payment, the system:
 
-Reliability Design
+1. Analyzes the payment failure.
+2. Generates an AI or fallback diagnosis.
+3. Recommends a recovery action.
+4. Applies safety policy validation.
+5. Executes the simulated recovery action when approved.
+6. Records the recovery outcome.
+7. Saves batch and audit information for future analysis.
 
-RecoverFlow AI is designed so that the complete recovery workflow does not depend entirely on an external AI API.
+The dashboard is then refreshed with the latest recovery metrics and batch history.
 
-Gemini AI Available
-│
-▼
+---
+
+## 🛡️ Reliability Design
+
+RecoverFlow AI is designed so that the recovery workflow does not depend completely on an external AI service.
+
+### When Gemini AI is Available
+
+```text
+Gemini AI
+    │
+    ▼
 AI Diagnosis
-│
-▼
+    │
+    ▼
 Safety Policy
-│
-▼
+    │
+    ▼
 Recovery Execution
+```
 
-If Gemini AI is unavailable:
+### When Gemini AI is Unavailable or Rate-Limited
 
+```text
 Gemini AI Failure / Rate Limit
-│
-▼
-Deterministic Fallback
-│
-▼
+            │
+            ▼
+Deterministic Fallback Diagnosis
+            │
+            ▼
 Safety Policy
-│
-▼
+            │
+            ▼
 Recovery Execution
+```
 
-This makes the system more resilient and reliable.
+This fallback mechanism allows the system to continue processing payment recovery workflows even when the external AI API is unavailable.
 
-Current Dashboard Capabilities
+---
 
-The dashboard provides:
+## 📊 Current Dashboard Capabilities
 
-Real-time dashboard refresh
-Loading state
-Error state
-Recovery batch running state
-Success message after batch completion
-Empty batch history state
-Latest 5 recovery batches
-Progress indicators
-Recovery metrics
-AI system metrics
-Persistent recovery batch history
-Future Improvements
+The RecoverFlow AI dashboard provides:
+
+- 🔄 Real-time dashboard refresh
+- ⏳ Loading state
+- ❌ Error state handling
+- ⏳ Recovery batch running state
+- ✅ Success message after batch completion
+- 📭 Empty batch history state
+- 📦 Latest 5 recovery batches
+- 📈 Progress indicators
+- 💰 Payment and recovery metrics
+- 🤖 AI system metrics
+- 🧠 AI and fallback diagnosis tracking
+- 🛡️ Policy decision tracking
+- 📝 Persistent recovery batch history
+- 🔍 Persistent audit trail
+
+---
+
+## 🚀 Future Improvements
 
 Possible future enhancements include:
 
-Database integration using MongoDB or PostgreSQL
-User authentication
-Role-based access control
-Real payment gateway integration
-Background job processing
-Retry scheduling
-Email recovery links
-Advanced analytics and charts
-Production deployment
-Docker containerization
-Project Demonstration Flow
+- Database integration using MongoDB or PostgreSQL
+- User authentication
+- Role-based access control
+- Real payment gateway integration
+- Background job processing
+- Scheduled retry mechanisms
+- Email recovery links
+- Advanced analytics and charts
+- Production deployment
+- Docker containerization
 
-A typical RecoverFlow AI workflow is:
+## 🎯 Project Demonstration Flow
 
-1. Payment fails
-   ↓
-2. AI analyzes failure
-   ↓
-3. Fallback is used if AI is unavailable
-   ↓
-4. Recovery action is recommended
-   ↓
-5. Safety policy validates the action
-   ↓
-6. Approved action is executed
-   ↓
-7. Recovery outcome is recorded
-   ↓
-8. Batch and audit information are stored
-   ↓
-9. Dashboard displays updated results
-   Key Learning Areas
+A typical RecoverFlow AI recovery workflow follows these steps:
+
+```text
+1. Payment Fails
+        ↓
+2. AI Analyzes the Failure
+        ↓
+3. Deterministic Fallback is Used if AI is Unavailable
+        ↓
+4. Recovery Action is Recommended
+        ↓
+5. Safety Policy Validates the Action
+        ↓
+6. Approved Action is Executed
+        ↓
+7. Recovery Outcome is Recorded
+        ↓
+8. Batch and Audit Information are Stored
+        ↓
+9. Dashboard Displays Updated Results
+```
+
+### Workflow Summary
+
+1. **Payment Failure**  
+   A failed payment enters the RecoverFlow AI recovery pipeline.
+
+2. **AI Diagnosis**  
+   Gemini AI analyzes the available payment context and identifies the possible failure cause.
+
+3. **Fallback Protection**  
+   If Gemini AI is unavailable or rate-limited, deterministic fallback logic provides a reliable diagnosis.
+
+4. **Recovery Recommendation**  
+   The system selects an appropriate recovery action based on the diagnosis.
+
+5. **Safety Policy Validation**  
+   Every recommended action is checked by the policy engine before execution.
+
+6. **Controlled Execution**  
+   Only approved actions are executed through the simulated recovery executor.
+
+7. **Outcome Recording**  
+   The result of the recovery attempt, including the recovered amount and outcome, is recorded.
+
+8. **Persistent Storage**  
+   Recovery batch information and audit records are saved for traceability and future analysis.
+
+9. **Dashboard Update**  
+   The React dashboard refreshes to display the latest recovery metrics and batch history.
+
+---
+
+## 🧠 Key Learning Areas
 
 This project demonstrates practical experience with:
 
-AI API integration
-AI fallback strategies
-Backend API development
-React frontend development
-Payment failure analysis
-Safety policy design
-Persistent data storage
-Audit logging
-Error handling
-API reliability
-Full-stack application development
+- 🤖 **AI API Integration** — Integrating Gemini AI for payment failure diagnosis.
+- 🔄 **AI Fallback Strategies** — Continuing the workflow when the external AI service is unavailable.
+- ⚙️ **Backend API Development** — Building backend APIs using Node.js and Express.js.
+- ⚛️ **React Frontend Development** — Creating an interactive dashboard using React and Vite.
+- 💳 **Payment Failure Analysis** — Analyzing different causes of failed payment transactions.
+- 🛡️ **Safety Policy Design** — Validating recovery actions before execution.
+- 💾 **Persistent Data Storage** — Storing payment, batch, and recovery-related data using JSON files.
+- 📝 **Audit Logging** — Recording important recovery events for transparency and traceability.
+- ❌ **Error Handling** — Handling AI failures, rate limits, and API errors gracefully.
+- 📡 **API Reliability** — Designing the system to remain functional even when the AI API is unavailable.
+- 🌐 **Full-Stack Application Development** — Connecting the React frontend with a Node.js/Express backend.
