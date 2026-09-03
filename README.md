@@ -242,6 +242,20 @@ APPROVE BLOCK / ESCALATE
 │ React Dashboard │
 └───────────────────┘
 
+## 📸 Project Screenshots
+
+### RecoverFlow AI Dashboard
+
+![RecoverFlow AI Dashboard](./screenshots/dashboard.png)
+
+### Recovery Batch History
+
+![Recovery Batch History](./screenshots/batch_history.png)
+
+### Audit Trail
+
+![Audit Trail](./screenshots/audit_trail.png)
+
        🛠️ Tech Stack
 
 Frontend

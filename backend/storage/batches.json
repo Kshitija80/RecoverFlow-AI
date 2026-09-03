@@ -28024,5 +28024,1562 @@
         "processed_at": "2026-09-02T06:11:23.964Z"
       }
     ]
+  },
+  {
+    "batch_id": "batch_1788431094563",
+    "created_at": "2026-09-03T10:24:54.563Z",
+    "summary": {
+      "total_failed_payments": 53,
+      "revenue_at_risk": 241361,
+      "recovered_payments": 27,
+      "recovered_amount": 108661,
+      "recovery_rate_percent": 50.94,
+      "money_recovery_rate_percent": 45.02,
+      "not_recovered_payments": 10,
+      "blocked_payments": 13,
+      "escalated_payments": 3,
+      "ai_calls_used": 5,
+      "ai_failures": 0,
+      "fallback_used": 48
+    },
+    "audit_trail": [
+      {
+        "payment_id": "pay_0001",
+        "amount": 1612,
+        "diagnosis_source": "gemini_ai",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.9,
+          "recommended_action": "retry_payment",
+          "explanation": "Payment failed due to a network timeout, which is a transient issue. A retry has a high chance of success, especially since it's the first attempt and the customer has a history of successful payments.",
+          "diagnosis_source": "gemini_ai"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "retry_payment",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0001",
+          "amount": 1612,
+          "requested_action": "retry_payment",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 1612,
+          "timestamp": "2026-09-03T10:24:34.437Z"
+        },
+        "processed_at": "2026-09-03T10:24:34.437Z"
+      },
+      {
+        "payment_id": "pay_0003",
+        "amount": 5398,
+        "diagnosis_source": "gemini_ai",
+        "diagnosis": {
+          "diagnosis": "customer_abandoned",
+          "confidence": 1,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The payment failed because the customer abandoned the checkout process. Sending a recovery link will allow the customer to complete the transaction.",
+          "diagnosis_source": "gemini_ai"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0003",
+          "amount": 5398,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 5398,
+          "timestamp": "2026-09-03T10:24:38.767Z"
+        },
+        "processed_at": "2026-09-03T10:24:38.767Z"
+      },
+      {
+        "payment_id": "pay_0004",
+        "amount": 3123,
+        "diagnosis_source": "gemini_ai",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.9,
+          "recommended_action": "send_recovery_link",
+          "explanation": "Payment failed due to a network timeout, indicating a transient technical issue. Given multiple retries have already occurred, sending a recovery link allows the customer to reattempt.",
+          "diagnosis_source": "gemini_ai"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0004",
+          "amount": 3123,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 3123,
+          "timestamp": "2026-09-03T10:24:45.211Z"
+        },
+        "processed_at": "2026-09-03T10:24:45.212Z"
+      },
+      {
+        "payment_id": "pay_0006",
+        "amount": 3664,
+        "diagnosis_source": "gemini_ai",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.9,
+          "recommended_action": "escalate",
+          "explanation": "Payment failed due to a technical error. Given the high retry count of 3, escalation is recommended to investigate the recurring issue.",
+          "diagnosis_source": "gemini_ai"
+        },
+        "policy_decision": {
+          "decision": "ESCALATE",
+          "action": "escalate",
+          "reason": "AI recommended human review"
+        },
+        "execution": {
+          "payment_id": "pay_0006",
+          "amount": 3664,
+          "requested_action": "escalate",
+          "policy_decision": "ESCALATE",
+          "policy_reason": "AI recommended human review",
+          "executed": false,
+          "outcome": "escalated",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:49.556Z"
+        },
+        "processed_at": "2026-09-03T10:24:49.556Z"
+      },
+      {
+        "payment_id": "pay_0007",
+        "amount": 3731,
+        "diagnosis_source": "gemini_ai",
+        "diagnosis": {
+          "diagnosis": "insufficient_funds",
+          "confidence": 1,
+          "recommended_action": "send_recovery_link",
+          "explanation": "Payment failed due to insufficient funds. The customer needs to add funds or try a different payment method.",
+          "diagnosis_source": "gemini_ai"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0007",
+          "amount": 3731,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "not_recovered",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.562Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.562Z"
+      },
+      {
+        "payment_id": "pay_0008",
+        "amount": 8914,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "insufficient_funds",
+          "confidence": 0.95,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The payment failed because of insufficient funds. Retrying immediately may not help, so a recovery link is recommended.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0008",
+          "amount": 8914,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 8914,
+          "timestamp": "2026-09-03T10:24:54.562Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.562Z"
+      },
+      {
+        "payment_id": "pay_0009",
+        "amount": 7250,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "customer_abandoned",
+          "confidence": 0.95,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The customer did not complete checkout. A recovery link can be used to allow the customer to complete the payment later.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0009",
+          "amount": 7250,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "not_recovered",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.562Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.562Z"
+      },
+      {
+        "payment_id": "pay_0011",
+        "amount": 7168,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "insufficient_funds",
+          "confidence": 0.95,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The payment failed because of insufficient funds. Retrying immediately may not help, so a recovery link is recommended.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0011",
+          "amount": 7168,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "not_recovered",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.562Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.562Z"
+      },
+      {
+        "payment_id": "pay_0012",
+        "amount": 7155,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "retry_payment",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0012",
+          "amount": 7155,
+          "requested_action": "retry_payment",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 7155,
+          "timestamp": "2026-09-03T10:24:54.562Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.562Z"
+      },
+      {
+        "payment_id": "pay_0013",
+        "amount": 1726,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "retry_payment",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0013",
+          "amount": 1726,
+          "requested_action": "retry_payment",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 1726,
+          "timestamp": "2026-09-03T10:24:54.562Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.562Z"
+      },
+      {
+        "payment_id": "pay_0016",
+        "amount": 2680,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "retry_payment",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0016",
+          "amount": 2680,
+          "requested_action": "retry_payment",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 2680,
+          "timestamp": "2026-09-03T10:24:54.562Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.562Z"
+      },
+      {
+        "payment_id": "pay_0018",
+        "amount": 3695,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "BLOCK",
+          "action": "no_action",
+          "reason": "Maximum retry limit of 2 reached"
+        },
+        "execution": {
+          "payment_id": "pay_0018",
+          "amount": 3695,
+          "requested_action": "no_action",
+          "policy_decision": "BLOCK",
+          "policy_reason": "Maximum retry limit of 2 reached",
+          "executed": false,
+          "outcome": "blocked",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.562Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.562Z"
+      },
+      {
+        "payment_id": "pay_0019",
+        "amount": 2004,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "BLOCK",
+          "action": "no_action",
+          "reason": "Maximum retry limit of 2 reached"
+        },
+        "execution": {
+          "payment_id": "pay_0019",
+          "amount": 2004,
+          "requested_action": "no_action",
+          "policy_decision": "BLOCK",
+          "policy_reason": "Maximum retry limit of 2 reached",
+          "executed": false,
+          "outcome": "blocked",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.562Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.562Z"
+      },
+      {
+        "payment_id": "pay_0022",
+        "amount": 2431,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "BLOCK",
+          "action": "no_action",
+          "reason": "Maximum retry limit of 2 reached"
+        },
+        "execution": {
+          "payment_id": "pay_0022",
+          "amount": 2431,
+          "requested_action": "no_action",
+          "policy_decision": "BLOCK",
+          "policy_reason": "Maximum retry limit of 2 reached",
+          "executed": false,
+          "outcome": "blocked",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.562Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.562Z"
+      },
+      {
+        "payment_id": "pay_0023",
+        "amount": 2216,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "BLOCK",
+          "action": "no_action",
+          "reason": "Maximum retry limit of 2 reached"
+        },
+        "execution": {
+          "payment_id": "pay_0023",
+          "amount": 2216,
+          "requested_action": "no_action",
+          "policy_decision": "BLOCK",
+          "policy_reason": "Maximum retry limit of 2 reached",
+          "executed": false,
+          "outcome": "blocked",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.562Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0024",
+        "amount": 2027,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "customer_abandoned",
+          "confidence": 0.95,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The customer did not complete checkout. A recovery link can be used to allow the customer to complete the payment later.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0024",
+          "amount": 2027,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 2027,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0025",
+        "amount": 8570,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "BLOCK",
+          "action": "no_action",
+          "reason": "Maximum retry limit of 2 reached"
+        },
+        "execution": {
+          "payment_id": "pay_0025",
+          "amount": 8570,
+          "requested_action": "no_action",
+          "policy_decision": "BLOCK",
+          "policy_reason": "Maximum retry limit of 2 reached",
+          "executed": false,
+          "outcome": "blocked",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0027",
+        "amount": 741,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "bank_declined",
+          "confidence": 0.9,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The bank declined the payment. A recovery link can offer the customer another opportunity to pay.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0027",
+          "amount": 741,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 741,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0032",
+        "amount": 9380,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "customer_abandoned",
+          "confidence": 0.95,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The customer did not complete checkout. A recovery link can be used to allow the customer to complete the payment later.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0032",
+          "amount": 9380,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 9380,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0035",
+        "amount": 7135,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "unknown",
+          "confidence": 0.7,
+          "recommended_action": "escalate",
+          "explanation": "Automatic fallback could not confidently determine the failure cause.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "ESCALATE",
+          "action": "escalate",
+          "reason": "AI recommended human review"
+        },
+        "execution": {
+          "payment_id": "pay_0035",
+          "amount": 7135,
+          "requested_action": "escalate",
+          "policy_decision": "ESCALATE",
+          "policy_reason": "AI recommended human review",
+          "executed": false,
+          "outcome": "escalated",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0039",
+        "amount": 1711,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "bank_declined",
+          "confidence": 0.9,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The bank declined the payment. A recovery link can offer the customer another opportunity to pay.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0039",
+          "amount": 1711,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 1711,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0040",
+        "amount": 9098,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "BLOCK",
+          "action": "no_action",
+          "reason": "Maximum retry limit of 2 reached"
+        },
+        "execution": {
+          "payment_id": "pay_0040",
+          "amount": 9098,
+          "requested_action": "no_action",
+          "policy_decision": "BLOCK",
+          "policy_reason": "Maximum retry limit of 2 reached",
+          "executed": false,
+          "outcome": "blocked",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0043",
+        "amount": 1078,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "BLOCK",
+          "action": "no_action",
+          "reason": "Maximum retry limit of 2 reached"
+        },
+        "execution": {
+          "payment_id": "pay_0043",
+          "amount": 1078,
+          "requested_action": "no_action",
+          "policy_decision": "BLOCK",
+          "policy_reason": "Maximum retry limit of 2 reached",
+          "executed": false,
+          "outcome": "blocked",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0046",
+        "amount": 4912,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "customer_abandoned",
+          "confidence": 0.95,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The customer did not complete checkout. A recovery link can be used to allow the customer to complete the payment later.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0046",
+          "amount": 4912,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 4912,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0047",
+        "amount": 2642,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "retry_payment",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0047",
+          "amount": 2642,
+          "requested_action": "retry_payment",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 2642,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0049",
+        "amount": 1314,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "customer_abandoned",
+          "confidence": 0.95,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The customer did not complete checkout. A recovery link can be used to allow the customer to complete the payment later.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0049",
+          "amount": 1314,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 1314,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0050",
+        "amount": 1220,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "unknown",
+          "confidence": 0.7,
+          "recommended_action": "escalate",
+          "explanation": "Automatic fallback could not confidently determine the failure cause.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "ESCALATE",
+          "action": "escalate",
+          "reason": "AI recommended human review"
+        },
+        "execution": {
+          "payment_id": "pay_0050",
+          "amount": 1220,
+          "requested_action": "escalate",
+          "policy_decision": "ESCALATE",
+          "policy_reason": "AI recommended human review",
+          "executed": false,
+          "outcome": "escalated",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0054",
+        "amount": 1795,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "customer_abandoned",
+          "confidence": 0.95,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The customer did not complete checkout. A recovery link can be used to allow the customer to complete the payment later.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0054",
+          "amount": 1795,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 1795,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0055",
+        "amount": 3070,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "retry_payment",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0055",
+          "amount": 3070,
+          "requested_action": "retry_payment",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 3070,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0056",
+        "amount": 7590,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "BLOCK",
+          "action": "no_action",
+          "reason": "Maximum retry limit of 2 reached"
+        },
+        "execution": {
+          "payment_id": "pay_0056",
+          "amount": 7590,
+          "requested_action": "no_action",
+          "policy_decision": "BLOCK",
+          "policy_reason": "Maximum retry limit of 2 reached",
+          "executed": false,
+          "outcome": "blocked",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0061",
+        "amount": 1585,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "bank_declined",
+          "confidence": 0.9,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The bank declined the payment. A recovery link can offer the customer another opportunity to pay.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0061",
+          "amount": 1585,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "not_recovered",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0064",
+        "amount": 9447,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "bank_declined",
+          "confidence": 0.9,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The bank declined the payment. A recovery link can offer the customer another opportunity to pay.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0064",
+          "amount": 9447,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 9447,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0065",
+        "amount": 1425,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "retry_payment",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0065",
+          "amount": 1425,
+          "requested_action": "retry_payment",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 1425,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0070",
+        "amount": 5464,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "retry_payment",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0070",
+          "amount": 5464,
+          "requested_action": "retry_payment",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 5464,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0074",
+        "amount": 8795,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "BLOCK",
+          "action": "no_action",
+          "reason": "Maximum retry limit of 2 reached"
+        },
+        "execution": {
+          "payment_id": "pay_0074",
+          "amount": 8795,
+          "requested_action": "no_action",
+          "policy_decision": "BLOCK",
+          "policy_reason": "Maximum retry limit of 2 reached",
+          "executed": false,
+          "outcome": "blocked",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0075",
+        "amount": 3406,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "insufficient_funds",
+          "confidence": 0.95,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The payment failed because of insufficient funds. Retrying immediately may not help, so a recovery link is recommended.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0075",
+          "amount": 3406,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "not_recovered",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0077",
+        "amount": 3563,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "bank_declined",
+          "confidence": 0.9,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The bank declined the payment. A recovery link can offer the customer another opportunity to pay.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0077",
+          "amount": 3563,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "not_recovered",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0081",
+        "amount": 7343,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "BLOCK",
+          "action": "no_action",
+          "reason": "Maximum retry limit of 2 reached"
+        },
+        "execution": {
+          "payment_id": "pay_0081",
+          "amount": 7343,
+          "requested_action": "no_action",
+          "policy_decision": "BLOCK",
+          "policy_reason": "Maximum retry limit of 2 reached",
+          "executed": false,
+          "outcome": "blocked",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0082",
+        "amount": 8307,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "bank_declined",
+          "confidence": 0.9,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The bank declined the payment. A recovery link can offer the customer another opportunity to pay.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0082",
+          "amount": 8307,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "not_recovered",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0083",
+        "amount": 4127,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "customer_abandoned",
+          "confidence": 0.95,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The customer did not complete checkout. A recovery link can be used to allow the customer to complete the payment later.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0083",
+          "amount": 4127,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "not_recovered",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0087",
+        "amount": 5426,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "retry_payment",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0087",
+          "amount": 5426,
+          "requested_action": "retry_payment",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 5426,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0091",
+        "amount": 2796,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "BLOCK",
+          "action": "no_action",
+          "reason": "Maximum retry limit of 2 reached"
+        },
+        "execution": {
+          "payment_id": "pay_0091",
+          "amount": 2796,
+          "requested_action": "no_action",
+          "policy_decision": "BLOCK",
+          "policy_reason": "Maximum retry limit of 2 reached",
+          "executed": false,
+          "outcome": "blocked",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0093",
+        "amount": 8740,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "insufficient_funds",
+          "confidence": 0.95,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The payment failed because of insufficient funds. Retrying immediately may not help, so a recovery link is recommended.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0093",
+          "amount": 8740,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "not_recovered",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0095",
+        "amount": 8354,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "bank_declined",
+          "confidence": 0.9,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The bank declined the payment. A recovery link can offer the customer another opportunity to pay.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0095",
+          "amount": 8354,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 8354,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0096",
+        "amount": 4939,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "BLOCK",
+          "action": "no_action",
+          "reason": "Maximum retry limit of 2 reached"
+        },
+        "execution": {
+          "payment_id": "pay_0096",
+          "amount": 4939,
+          "requested_action": "no_action",
+          "policy_decision": "BLOCK",
+          "policy_reason": "Maximum retry limit of 2 reached",
+          "executed": false,
+          "outcome": "blocked",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0098",
+        "amount": 1490,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "bank_declined",
+          "confidence": 0.9,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The bank declined the payment. A recovery link can offer the customer another opportunity to pay.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0098",
+          "amount": 1490,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 1490,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0099",
+        "amount": 2177,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "insufficient_funds",
+          "confidence": 0.95,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The payment failed because of insufficient funds. Retrying immediately may not help, so a recovery link is recommended.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0099",
+          "amount": 2177,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 2177,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0100",
+        "amount": 8092,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "transient_technical_failure",
+          "confidence": 0.95,
+          "recommended_action": "retry_payment",
+          "explanation": "The failure reason indicates a temporary technical issue. A bounded retry may be appropriate.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "BLOCK",
+          "action": "no_action",
+          "reason": "Maximum retry limit of 2 reached"
+        },
+        "execution": {
+          "payment_id": "pay_0100",
+          "amount": 8092,
+          "requested_action": "no_action",
+          "policy_decision": "BLOCK",
+          "policy_reason": "Maximum retry limit of 2 reached",
+          "executed": false,
+          "outcome": "blocked",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0102",
+        "amount": 4157,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "bank_declined",
+          "confidence": 0.9,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The bank declined the payment. A recovery link can offer the customer another opportunity to pay.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0102",
+          "amount": 4157,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "not_recovered",
+          "recovered_amount": 0,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0104",
+        "amount": 1967,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "insufficient_funds",
+          "confidence": 0.95,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The payment failed because of insufficient funds. Retrying immediately may not help, so a recovery link is recommended.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0104",
+          "amount": 1967,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 1967,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0107",
+        "amount": 8364,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "bank_declined",
+          "confidence": 0.9,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The bank declined the payment. A recovery link can offer the customer another opportunity to pay.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0107",
+          "amount": 8364,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 8364,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0116",
+        "amount": 4037,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "bank_declined",
+          "confidence": 0.9,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The bank declined the payment. A recovery link can offer the customer another opportunity to pay.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0116",
+          "amount": 4037,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 4037,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      },
+      {
+        "payment_id": "pay_0118",
+        "amount": 2310,
+        "diagnosis_source": "deterministic_fallback",
+        "diagnosis": {
+          "diagnosis": "customer_abandoned",
+          "confidence": 0.95,
+          "recommended_action": "send_recovery_link",
+          "explanation": "The customer did not complete checkout. A recovery link can be used to allow the customer to complete the payment later.",
+          "diagnosis_source": "deterministic_fallback"
+        },
+        "policy_decision": {
+          "decision": "APPROVE",
+          "action": "send_recovery_link",
+          "reason": "Recovery action passed all safety policy checks"
+        },
+        "execution": {
+          "payment_id": "pay_0118",
+          "amount": 2310,
+          "requested_action": "send_recovery_link",
+          "policy_decision": "APPROVE",
+          "policy_reason": "Recovery action passed all safety policy checks",
+          "executed": true,
+          "outcome": "recovered",
+          "recovered_amount": 2310,
+          "timestamp": "2026-09-03T10:24:54.563Z"
+        },
+        "processed_at": "2026-09-03T10:24:54.563Z"
+      }
+    ]
   }
 ]
